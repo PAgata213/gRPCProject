@@ -1,0 +1,21 @@
+services:
+  webservice:
+    image: ${DOCKER_REGISTRY-}webservice
+    build:
+      context: .
+      dockerfile: src/WebService/Dockerfile
+    networks:
+      - inner-network
+
+
+  grpcservice:
+    image: ${DOCKER_REGISTRY-}grpcservice
+    build:
+      context: .
+      dockerfile: src/GrpcService/Dockerfile
+    networks:
+      - inner-network
+
+networks:
+  inner-network:
+    name: inner-network
